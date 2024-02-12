@@ -39,12 +39,12 @@ class gameScene extends Phaser.Scene{
     }
 
     preload(){
-        this.load.image("bg", "/tutorial/assets/bg.png");
-        this.load.image("basket", "/tutorial/assets/basket.png");
-        this.load.image("apple", "/tutorial/assets/apple.png");
-        this.load.image("money", "/tutorial/assets/money.png");
-        this.load.audio("coin", "/tutorial/assets/coin.mp3");
-        this.load.audio("bgMusic", "/tutorial/assets/bgMusic.mp3");
+        this.load.image("bg", "./assets/bg.png");
+        this.load.image("basket", "./assets/basket.png");
+        this.load.image("apple", "./assets/apple.png");
+        this.load.image("money", "./assets/money.png");
+        this.load.audio("coin", "./assets/coin.mp3");
+        this.load.audio("bgMusic", "./assets/bgMusic.mp3");
     }
 
     create(){
@@ -83,7 +83,7 @@ class gameScene extends Phaser.Scene{
             fill : "#000000",
         });
 
-        this.timedEvent = this.time.delayedCall(3000, this.gameOver, [], this);
+        this.timedEvent = this.time.delayedCall(30000, this.gameOver, [], this);
 
         this.emitter = this.add.particles(0,0,"money",{
             speed: 100,
@@ -107,6 +107,7 @@ class gameScene extends Phaser.Scene{
         const {left, right} = this.cursor;
 
         if(left.isDown) {
+            console.log("left!");
             this.player.setVelocityX(-this.playerSpeed);
         }else if(right.isDown) {
             this.player.setVelocityX(this.playerSpeed);
